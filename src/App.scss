@@ -8,13 +8,13 @@
 .App {
     width: 1200px;
     margin: 10px auto;
+
     display: grid;
     grid-template-areas:
       "header header"
       "sidebar content"
       "footer footer";
-
-    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-rows: auto;
     grid-template-columns: 2fr 10fr;
     gap: 10px;
 }
