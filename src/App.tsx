@@ -4,15 +4,30 @@ import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
+import Dialogs from './components/Dialogs/Dialogs'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import News from './components/News/News'
+import Music from './components/Music/Music'
+import Settings from './components/Settings/Settings'
 
 function App() {
     return (
-        <div className="App">
-            <Header/>
-            <Sidebar/>
-            <Profile/>
-            <Footer/>
-        </div>
+        <BrowserRouter>
+            <div className="app">
+                <Header/>
+                <Sidebar/>
+                <div className="content-container">
+                    <Routes>
+                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/dialogs" element={<Dialogs/>}/>
+                        <Route path="/news" element={<News/>}/>
+                        <Route path="/music" element={<Music/>}/>
+                        <Route path="/settings" element={<Settings/>}/>
+                    </Routes>
+                </div>
+                <Footer/>
+            </div>
+        </BrowserRouter>
     )
 }
 

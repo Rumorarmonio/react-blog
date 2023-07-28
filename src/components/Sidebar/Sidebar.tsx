@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Sidebar.module.scss'
+import {Link} from 'react-router-dom'
 
 function Sidebar() {
     return (
@@ -7,19 +8,19 @@ function Sidebar() {
             <nav>
                 <ul className={styles.links}>
                     <li>
-                        <a className={`${styles.link} ${styles.active}`} href="/Programming/Web/react/it-kamasutra/react-blog/public">Profile</a>
+                        <Link className={`${styles.link} ${styles.active}`} to="/profile">Profile</Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/Programming/Web/react/it-kamasutra/react-blog/public">Messages</a>
+                        <Link className={styles.link} to="/dialogs">Messages</Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/Programming/Web/react/it-kamasutra/react-blog/public">News</a>
+                        <Link className={styles.link} to="/news">News</Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/Programming/Web/react/it-kamasutra/react-blog/public">Music</a>
+                        <Link className={styles.link} to="/music">Music</Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/Programming/Web/react/it-kamasutra/react-blog/public">Settings</a>
+                        <Link className={styles.link} to="/settings">Settings</Link>
                     </li>
                 </ul>
             </nav>

@@ -5,7 +5,7 @@
     color: #222;
 }
 
-.App {
+.app {
     width: 1200px;
     margin: 10px auto;
 
@@ -15,6 +15,12 @@
       "sidebar content"
       "footer footer";
     grid-template-rows: auto;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 1fr 5fr;
     gap: 10px;
+}
+
+.content-container {
+    grid-area: content;
+    padding: 20px;
+    background-color: #fff4ba;
 }
