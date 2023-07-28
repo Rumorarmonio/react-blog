@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Sidebar.module.scss'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 function Sidebar() {
     return (
@@ -8,19 +8,19 @@ function Sidebar() {
             <nav>
                 <ul className={styles.links}>
                     <li>
-                        <Link className={`${styles.link} ${styles.active}`} to="/profile">Profile</Link>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/profile">Profile</NavLink>
                     </li>
                     <li>
-                        <Link className={styles.link} to="/dialogs">Messages</Link>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs">Messages</NavLink>
                     </li>
                     <li>
-                        <Link className={styles.link} to="/news">News</Link>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/news">News</NavLink>
                     </li>
                     <li>
-                        <Link className={styles.link} to="/music">Music</Link>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/music">Music</NavLink>
                     </li>
                     <li>
-                        <Link className={styles.link} to="/settings">Settings</Link>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/settings">Settings</NavLink>
                     </li>
                 </ul>
             </nav>
