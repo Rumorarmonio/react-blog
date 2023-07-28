@@ -11,9 +11,9 @@ function MyPosts() {
                 <button>Add post</button>
             </div>
             <div className={styles.posts}>
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post message="Hi girls and hi zyabls" likes={15}/>
+                <Post message="And hi babybon my little zyabls" likes={20}/>
+                <Post message="It's my first post!" likes={25}/>
             </div>
         </div>
     )
