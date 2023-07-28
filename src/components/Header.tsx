@@ -1,10 +1,11 @@
 import React from 'react'
 import Logo from '../images/blog-logo.png'
+import styles from './Header.module.scss'
 
 function Header() {
     return (
-        <header className="header">
-            <img className="header__logo" src={Logo} alt="logo"/>
+        <header className={styles.header}>
+            <img className={styles.logo} src={Logo} alt="logo"/>
         </header>
     )
 }

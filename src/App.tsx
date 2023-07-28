@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.scss'
 import Header from './components/Header'
-import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
 import Profile from './components/Profile'
 import Footer from './components/Footer'
 
@@ -9,7 +9,7 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            <Navbar/>
+            <Sidebar/>
             <Profile/>
             <Footer/>
         </div>

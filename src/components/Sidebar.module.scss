@@ -1,0 +1,18 @@
+.sidebar {
+    grid-area: sidebar;
+    padding: 10px;
+    background-color: #baffff;
+}
+
+.links {
+    list-style: none;
+}
+
+.link {
+    text-decoration: none;
+    color: #999;
+}
+
+.active {
+    color: #eebaff;
+}
