@@ -8,19 +8,19 @@ function Sidebar() {
             <nav>
                 <ul className={styles.links}>
                     <li>
-                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/react-blog/profile">Profile</NavLink>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/profile">Profile</NavLink>
                     </li>
                     <li>
-                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/react-blog/dialogs">Messages</NavLink>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs">Messages</NavLink>
                     </li>
                     <li>
-                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/react-blog/news">News</NavLink>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/news">News</NavLink>
                     </li>
                     <li>
-                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/react-blog/music">Music</NavLink>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/music">Music</NavLink>
                     </li>
                     <li>
-                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/react-blog/settings">Settings</NavLink>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/settings">Settings</NavLink>
                     </li>
                 </ul>
             </nav>
