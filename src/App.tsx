@@ -18,11 +18,11 @@ function App() {
                 <Sidebar/>
                 <div className="content-container">
                     <Routes>
-                        <Route path="/profile" element={<Profile/>}/>
-                        <Route path="/dialogs/*" element={<Dialogs/>}/>
-                        <Route path="/news" element={<News/>}/>
-                        <Route path="/music" element={<Music/>}/>
-                        <Route path="/settings" element={<Settings/>}/>
+                        <Route path="/react-blog/profile" element={<Profile/>}/>
+                        <Route path="/react-blog/dialogs/*" element={<Dialogs/>}/>
+                        <Route path="/react-blog/news" element={<News/>}/>
+                        <Route path="/react-blog/music" element={<Music/>}/>
+                        <Route path="/react-blog/settings" element={<Settings/>}/>
                     </Routes>
                 </div>
                 <Footer/>
