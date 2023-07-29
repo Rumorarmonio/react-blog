@@ -10,7 +10,7 @@ export class Post {
     }
 }
 
-export class Person {
+export class Dialog {
     id: number
     name: string
 
@@ -27,5 +27,20 @@ export class Message {
     constructor(id: number, text: string) {
         this.id = id
         this.text = text
+    }
+}
+
+export default class State {
+    messagesPage: {
+        dialogs: Dialog[],
+        messages: Message[]
+    }
+    profilePage: {
+        posts: Post[]
+    }
+
+    constructor(messagesPage: { dialogs: Dialog[]; messages: Message[] }, profilePage: { posts: Post[] }) {
+        this.messagesPage = messagesPage
+        this.profilePage = profilePage
     }
 }

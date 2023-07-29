@@ -9,9 +9,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import News from './components/News/News'
 import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
-import { persons, messages, posts } from './data'
 
-function App() {
+function App(props: any) {
     return (
         <BrowserRouter /*basename="/react-blog"*/>
             <div className="app">
@@ -19,8 +18,8 @@ function App() {
                 <Sidebar/>
                 <div className="content-container">
                     <Routes>
-                        <Route path="/profile" element={<Profile posts={posts}/>}/>
-                        <Route path="/dialogs/*" element={<Dialogs messages={messages} persons={persons}/>}/>
+                        <Route path="/profile" element={<Profile state={props.state.profilePage}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs state={props.state.messagesPage}/>}/>
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/>
