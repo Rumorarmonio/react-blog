@@ -1,28 +1,21 @@
 import React from 'react'
 import styles from './Dialogs.module.scss'
-import {NavLink} from 'react-router-dom'
+import Message from './Message/Message'
+import DialogLink from './DialogLink/DialogLink'
 
 function Dialogs() {
     return (
         <div className={styles.dialogs}>
             <ul className={styles.dialogLinks}>
-                <li>
-                    <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs/1">Dimych</NavLink>
-                </li>
-                <li>
-                    <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs/2">Semen</NavLink>
-                </li>
-                <li>
-                    <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs/3">Andrey</NavLink>
-                </li>
-                <li>
-                    <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs/4">Sasha</NavLink>
-                </li>
+                <DialogLink name="Daniel" id={1}/>
+                <DialogLink name="Semen" id={2}/>
+                <DialogLink name="Andrey" id={3}/>
+                <DialogLink name="Sasha" id={4}/>
             </ul>
             <ul className={styles.messages}>
-                <li className={styles.message}>Hi</li>
-                <li className={styles.message}>How are you?</li>
-                <li className={styles.message}>Yo!</li>
+                <Message message="Hi"/>
+                <Message message="How are you?"/>
+                <Message message="Yo!"/>
             </ul>
         </div>
     )
