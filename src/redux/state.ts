@@ -22,20 +22,27 @@ const state: State = new State(
             {id: 1, text: 'Hi girls and hi zyabls', likes: 15},
             {id: 2, text: 'And hi babybon my little zyabls', likes: 20},
             {id: 3, text: 'It\'s my first post!', likes: 25}
-        ]
+        ],
+        newPostText: ''
     }
 )
 
-export function addPost(postMessage: string) {
+console.log(state)
+
+export function addPost() {
     let newPost: Post = {
         id: 5,
-        text: postMessage,
+        text: state.profilePage.newPostText,
         likes: 0
     }
     state.profilePage.posts.push(newPost)
-    rerenderEntireTree(state, addPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state, addPost, updateNewPostText)
+}
+
+export function updateNewPostText(newText: string) {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state, addPost, updateNewPostText)
 }
 
 export default state
-
-

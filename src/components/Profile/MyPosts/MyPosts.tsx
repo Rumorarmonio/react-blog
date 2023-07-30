@@ -8,15 +8,19 @@ function MyPosts(props: any) {
 
     function addPost() {
         let text = newPostElement.current?.value
-        props.addPost(text)
-        newPostElement.current!!.value = ''
+        props.addPost()
+    }
+
+    function onPostChange() {
+        let text = newPostElement.current?.value
+        props.updateNewPostText(text)
     }
 
     return (
         <div className={styles.postsContainer}>
             <h3 className={styles.postsHeader}>My posts</h3>
             <div className={styles.postForm}>
-                <textarea ref={newPostElement}></textarea>
+                <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
                 <button onClick={addPost}>Add post</button>
             </div>
             <div className={styles.posts}>
