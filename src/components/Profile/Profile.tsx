@@ -7,7 +7,7 @@ function Profile(props: any) {
     return (
         <section className={styles.content}>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts}/>
+            <MyPosts posts={props.state.posts} addPost={props.addPost}/>
         </section>
     )
 }

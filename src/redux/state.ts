@@ -1,4 +1,5 @@
-import State from '../models'
+import State, {Post} from '../models'
+import {rerenderEntireTree} from '../render'
 
 const state: State = new State(
     {
@@ -24,6 +25,16 @@ const state: State = new State(
         ]
     }
 )
+
+export function addPost(postMessage: string) {
+    let newPost: Post = {
+        id: 5,
+        text: postMessage,
+        likes: 0
+    }
+    state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state, addPost)
+}
 
 export default state
 
