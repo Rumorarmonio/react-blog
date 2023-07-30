@@ -10,13 +10,15 @@ export class Post {
     }
 }
 
-export class Dialog {
+export class User {
     id: number
     name: string
+    avatar: string
 
-    constructor(id: number, name: string) {
+    constructor(id: number, name: string, avatar: string) {
         this.id = id
         this.name = name
+        this.avatar = avatar
     }
 }
 
@@ -32,15 +34,20 @@ export class Message {
 
 export default class State {
     messagesPage: {
-        dialogs: Dialog[],
+        users: User[],
         messages: Message[]
     }
     profilePage: {
         posts: Post[]
     }
+    sidebar: {
+        friends: User[]
+    }
 
-    constructor(messagesPage: { dialogs: Dialog[]; messages: Message[] }, profilePage: { posts: Post[] }) {
+    constructor(messagesPage: { users: User[]; messages: Message[] }, profilePage: { posts: Post[] }) {
         this.messagesPage = messagesPage
         this.profilePage = profilePage
+        this.sidebar = {friends: []}
+        this.sidebar.friends = messagesPage.users
     }
 }

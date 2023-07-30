@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './Sidebar.module.scss'
 import {NavLink} from 'react-router-dom'
+import Friends from './Friends/Friends'
 
-function Sidebar() {
+function Sidebar(props: any) {
     return (
         <aside className={styles.sidebar}>
             <nav>
@@ -24,6 +25,7 @@ function Sidebar() {
                     </li>
                 </ul>
             </nav>
+            <Friends friends={props.state.friends}/>
         </aside>
     )
 }

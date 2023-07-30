@@ -4,6 +4,7 @@ import './index.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import state from './redux/state'
+import {BrowserRouter} from 'react-router-dom'
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <App state={state}/>
+        <BrowserRouter /*basename="/react-blog"*/>
+            <App state={state}/>
+        </BrowserRouter>
     </React.StrictMode>
 )
 

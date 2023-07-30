@@ -1,16 +1,16 @@
 import React from 'react'
 import styles from './Dialogs.module.scss'
 import MessageItem from './Message/MessageItem'
-import DialogLink from './DialogLink/DialogLink'
-import {Message, Dialog} from '../../models'
+import Dialog from './Dialog/Dialog'
+import {Message, User} from '../../models'
 
 function Dialogs(props: any) {
     return (
         <div className={styles.dialogs}>
             <ul className={styles.dialogLinks}>
                 {
-                    props.state.dialogs.map((person: Dialog) => (
-                        <DialogLink person={person}/>
+                    props.state.users.map((user: User) => (
+                        <Dialog user={user}/>
                     ))
                 }
             </ul>
