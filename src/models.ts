@@ -32,7 +32,7 @@ export class Message {
     }
 }
 
-export default class State {
+export class State {
     messagesPage: {
         users: User[],
         messages: Message[],
@@ -59,3 +59,21 @@ export default class State {
 
 // this.sidebar = {friends: []}
 // this.sidebar.friends = messagesPage.users
+
+export default class Store {
+    state: State
+    addPost: Function
+    updateNewPostText: Function
+    sendMessage: Function
+    updateNewMessageText: Function
+    subscribe: Function
+
+    constructor(state: State, addPost: Function, updateNewPostText: Function, sendMessage: Function, updateNewMessageText: Function, subscribe: Function) {
+        this.state = state
+        this.addPost = addPost
+        this.updateNewPostText = updateNewPostText
+        this.sendMessage = sendMessage
+        this.updateNewMessageText = updateNewMessageText
+        this.subscribe = subscribe
+    }
+}

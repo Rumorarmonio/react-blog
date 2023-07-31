@@ -14,22 +14,22 @@ function App(props: any) {
     return (
         <div className="app">
             <Header/>
-            <Sidebar state={props.state.sidebar}/>
+            <Sidebar state={props.store.state.sidebar}/>
             <div className="content-container">
                 <Routes>
                     <Route path="/profile"
                            element={
                                <Profile
-                                   profilePage={props.state.profilePage}
-                                   updateNewPostText={props.updateNewPostText}
-                                   addPost={props.addPost}/>
+                                   profilePage={props.store.state.profilePage}
+                                   updateNewPostText={props.store.updateNewPostText}
+                                   addPost={props.store.addPost}/>
                            }/>
                     <Route path="/dialogs/*"
                            element={
                                <Dialogs
-                                   messagesPage={props.state.messagesPage}
-                                   sendMessage={props.sendMessage}
-                                   updateNewMessageText={props.updateNewMessageText}/>
+                                   messagesPage={props.store.state.messagesPage}
+                                   sendMessage={props.store.sendMessage}
+                                   updateNewMessageText={props.store.updateNewMessageText}/>
                            }/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/music" element={<Music/>}/>
