@@ -1,14 +1,14 @@
 import React, {useRef} from 'react'
 import styles from './MyPosts.module.scss'
 import PostItem from './Post/Post'
-import {Post} from '../../../models'
+import {Action, Post} from '../../../models'
 
 function MyPosts(props: any) {
     const textArea = useRef<HTMLTextAreaElement>(null)
 
-    const addPost = () => props.addPost()
+    const addPost = () => props.dispatch(new Action('ADD-POST'))
 
-    const onPostChange = () => props.updateNewPostText(textArea.current?.value)
+    const onPostChange = () => props.dispatch(new Action('UPDATE-NEW-POST-TEXT', textArea.current!!.value))
 
     return (
         <div className={styles.postsContainer}>

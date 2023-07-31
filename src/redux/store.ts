@@ -1,6 +1,6 @@
-import Store, {State, Post, Message} from '../models'
+import Store, {State, Post, Message, Action} from '../models'
 
-const state: State = new State(
+const _state: State = new State(
     {
         users: [
             {id: 1, name: 'Daniel', avatar: 'https://yt3.googleusercontent.com/ytc/AOPolaTzK-nRd9dEvq83lpi8ecoANCboYK52hB6CmxO9=s900-c-k-c0x00ffffff-no-rj'},
@@ -31,41 +31,37 @@ let rerenderEntireTree = (store: Store) => console.log('unreachable function')
 
 export const store: Store = new Store
 (
-    state,
-
-    () => {
-        let newPost: Post = {
-            id: 5,
-            text: state.profilePage.newPostText,
-            likes: 0
-        }
-        state.profilePage.posts.push(newPost)
-        state.profilePage.newPostText = ''
-        rerenderEntireTree(store)
-    },
-
-    (newText: string) => {
-        state.profilePage.newPostText = newText
-        rerenderEntireTree(store)
-    },
-
-    () => {
-        let newMessage: Message = {
-            id: 5,
-            text: state.messagesPage.newMessageText,
-        }
-        state.messagesPage.messages.push(newMessage)
-        state.messagesPage.newMessageText = ''
-        rerenderEntireTree(store)
-    },
-
-    (newText: string) => {
-        state.messagesPage.newMessageText = newText
-        rerenderEntireTree(store)
-    },
+    _state,
 
     (observer: any) => {
         rerenderEntireTree = observer
+    },
+
+    (action: Action) => {
+        if (action.type === 'ADD-POST') {
+            let newPost: Post = {
+                id: 5,
+                text: _state.profilePage.newPostText,
+                likes: 0
+            }
+            _state.profilePage.posts.push(newPost)
+            _state.profilePage.newPostText = ''
+            rerenderEntireTree(store)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            _state.profilePage.newPostText = action.newText!!
+            rerenderEntireTree(store)
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage: Message = {
+                id: 5,
+                text: _state.messagesPage.newMessageText,
+            }
+            _state.messagesPage.messages.push(newMessage)
+            _state.messagesPage.newMessageText = ''
+            rerenderEntireTree(store)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            _state.messagesPage.newMessageText = action.newText!!
+            rerenderEntireTree(store)
+        }
     }
 )
 

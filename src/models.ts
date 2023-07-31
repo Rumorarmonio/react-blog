@@ -60,20 +60,33 @@ export class State {
 // this.sidebar = {friends: []}
 // this.sidebar.friends = messagesPage.users
 
-export default class Store {
-    state: State
-    addPost: Function
-    updateNewPostText: Function
-    sendMessage: Function
-    updateNewMessageText: Function
-    subscribe: Function
+export class Action {
+    type: string
+    newText?: string
 
-    constructor(state: State, addPost: Function, updateNewPostText: Function, sendMessage: Function, updateNewMessageText: Function, subscribe: Function) {
-        this.state = state
-        this.addPost = addPost
-        this.updateNewPostText = updateNewPostText
-        this.sendMessage = sendMessage
-        this.updateNewMessageText = updateNewMessageText
+    constructor(type: string, newText?: string) {
+        this.type = type
+        this.newText = newText
+    }
+}
+
+export default class Store {
+    get getState(): State {
+        return this.#state!!
+    }
+
+    set setState(value: State) {
+        this.#state = value
+    }
+
+    #state?: State
+    subscribe: Function
+    dispatch: Function
+
+
+    constructor(state: State, subscribe: Function, dispatch: Function) {
+        this.#state = state
         this.subscribe = subscribe
+        this.dispatch = dispatch
     }
 }

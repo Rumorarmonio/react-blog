@@ -2,14 +2,14 @@ import React, {useRef} from 'react'
 import styles from './Dialogs.module.scss'
 import MessageItem from './Message/MessageItem'
 import Dialog from './Dialog/Dialog'
-import {Message, User} from '../../models'
+import {Action, Message, User} from '../../models'
 
 function Dialogs(props: any) {
     const textArea = useRef<HTMLTextAreaElement>(null)
 
-    const sendMessage = () => props.sendMessage()
+    const sendMessage = () => props.dispatch(new Action('SEND-MESSAGE'))
 
-    const onTextChange = () => props.updateNewMessageText(textArea.current?.value)
+    const onTextChange = () => props.dispatch(new Action('UPDATE-NEW-MESSAGE-TEXT', textArea.current?.value))
 
     return (
         <div className={styles.dialogs}>
