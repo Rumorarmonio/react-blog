@@ -1,5 +1,6 @@
 import State, {Message, Post} from '../models'
-import {rerenderEntireTree} from '../render'
+
+let rerenderEntireTree = (state: State) => console.log('unreachable function')
 
 const state: State = new State(
     {
@@ -36,12 +37,12 @@ export function addPost() {
     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
+    rerenderEntireTree(state)
 }
 
 export function updateNewPostText(newText: string) {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
+    rerenderEntireTree(state)
 }
 
 export function sendMessage() {
@@ -51,12 +52,16 @@ export function sendMessage() {
     }
     state.messagesPage.messages.push(newMessage)
     state.messagesPage.newMessageText = ''
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
+    rerenderEntireTree(state)
 }
 
 export function updateNewMessageText(newText: string) {
     state.messagesPage.newMessageText = newText
-    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
+    rerenderEntireTree(state)
+}
+
+export function subscribe(observer: any) {
+    rerenderEntireTree = observer
 }
 
 export default state
