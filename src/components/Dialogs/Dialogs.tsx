@@ -5,18 +5,17 @@ import Dialog from './Dialog/Dialog'
 import {Message, User} from '../../models'
 
 function Dialogs(props: any) {
-    const sendMessageElement = useRef<HTMLTextAreaElement>(null)
+    const textArea = useRef<HTMLTextAreaElement>(null)
 
-    function sendMessage() {
-        let text = sendMessageElement.current?.value
-        alert(text)
-    }
+    const sendMessage = () => props.sendMessage()
+
+    const onTextChange = () => props.updateNewMessageText(textArea.current?.value)
 
     return (
         <div className={styles.dialogs}>
             <ul className={styles.dialogLinks}>
                 {
-                    props.state.users.map((user: User) => (
+                    props.messagesPage.users.map((user: User) => (
                         <Dialog user={user}/>
                     ))
                 }
@@ -24,13 +23,13 @@ function Dialogs(props: any) {
             <div className={styles.right}>
                 <ul className={styles.messages}>
                     {
-                        props.state.messages.map((message: Message) => (
+                        props.messagesPage.messages.map((message: Message) => (
                             <MessageItem message={message}/>
                         ))
                     }
                 </ul>
                 <div className={styles.postForm}>
-                    <textarea ref={sendMessageElement}></textarea>
+                    <textarea onChange={onTextChange} ref={textArea} value={props.messagesPage.newMessageText}></textarea>
                     <button onClick={sendMessage}>Send message</button>
                 </div>
             </div>

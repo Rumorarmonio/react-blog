@@ -9,11 +9,23 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 )
 
-export function rerenderEntireTree(state: State, addPost: Function, updateNewPostText: Function) {
+export function rerenderEntireTree(
+    state: State,
+    addPost: Function,
+    updateNewPostText: Function,
+    sendMessage: Function,
+    updateNewMessageText: Function
+) {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+                <App
+                    state={state}
+                    addPost={addPost}
+                    updateNewPostText={updateNewPostText}
+                    sendMessage={sendMessage}
+                    updateNewMessageText={updateNewMessageText}
+                />
             </BrowserRouter>
         </React.StrictMode>
     )

@@ -35,7 +35,8 @@ export class Message {
 export default class State {
     messagesPage: {
         users: User[],
-        messages: Message[]
+        messages: Message[],
+        newMessageText: string
     }
     profilePage: {
         posts: Post[],
@@ -45,7 +46,10 @@ export default class State {
         friends: User[]
     }
 
-    constructor(messagesPage: { users: User[]; messages: Message[] }, profilePage: { posts: Post[]; newPostText: string }) {
+    constructor(
+        messagesPage: { users: User[]; messages: Message[]; newMessageText: string },
+        profilePage: { posts: Post[]; newPostText: string }
+    ) {
         this.messagesPage = messagesPage
         this.profilePage = profilePage
         this.sidebar = {friends: []}

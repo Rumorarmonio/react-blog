@@ -1,4 +1,4 @@
-import State, {Post} from '../models'
+import State, {Message, Post} from '../models'
 import {rerenderEntireTree} from '../render'
 
 const state: State = new State(
@@ -15,7 +15,8 @@ const state: State = new State(
             {id: 3, text: 'Yo!'},
             {id: 4, text: 'Yo!'},
             {id: 5, text: 'Yo!'},
-        ]
+        ],
+        newMessageText: ''
     },
     {
         posts: [
@@ -27,8 +28,6 @@ const state: State = new State(
     }
 )
 
-console.log(state)
-
 export function addPost() {
     let newPost: Post = {
         id: 5,
@@ -37,12 +36,27 @@ export function addPost() {
     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state, addPost, updateNewPostText)
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
 }
 
 export function updateNewPostText(newText: string) {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state, addPost, updateNewPostText)
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
+}
+
+export function sendMessage() {
+    let newMessage: Message = {
+        id: 5,
+        text: state.messagesPage.newMessageText,
+    }
+    state.messagesPage.messages.push(newMessage)
+    state.messagesPage.newMessageText = ''
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
+}
+
+export function updateNewMessageText(newText: string) {
+    state.messagesPage.newMessageText = newText
+    rerenderEntireTree(state, addPost, updateNewPostText, sendMessage, updateNewMessageText)
 }
 
 export default state
