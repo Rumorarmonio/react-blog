@@ -46,23 +46,18 @@ export const store: Store = new Store
 
     (action: Action) => {
         if (action.type === types.ADD_POST) {
-            let newPost: Post = {
-                id: 5,
-                text: _state.profilePage.newPostText,
-                likes: 0
-            }
-            _state.profilePage.posts.push(newPost)
+            _state.profilePage.posts.push(
+                new Post(5, _state.profilePage.newPostText, 0)
+            )
             _state.profilePage.newPostText = ''
             rerenderEntireTree(store)
         } else if (action.type === types.UPDATE_NEW_POST_TEXT) {
             _state.profilePage.newPostText = action.newText!!
             rerenderEntireTree(store)
         } else if (action.type === types.SEND_MESSAGE) {
-            let newMessage: Message = {
-                id: 5,
-                text: _state.messagesPage.newMessageText,
-            }
-            _state.messagesPage.messages.push(newMessage)
+            _state.messagesPage.messages.push(
+                new Message(5, _state.messagesPage.newMessageText)
+            )
             _state.messagesPage.newMessageText = ''
             rerenderEntireTree(store)
         } else if (action.type === types.UPDATE_NEW_MESSAGE_TEXT) {
@@ -72,11 +67,11 @@ export const store: Store = new Store
     }
 )
 
-export const addPostActionCreator = () => (new Action(types.ADD_POST))
-export const updateNewPostTextActionCreator = (text: string) => (new Action(types.UPDATE_NEW_POST_TEXT, text))
+export const addPostCreator = () => (new Action(types.ADD_POST))
+export const updateNewPostCreator = (text: string) => (new Action(types.UPDATE_NEW_POST_TEXT, text))
 
-export const sendMessageActionCreator = () => (new Action(types.SEND_MESSAGE))
-export const updateNewMessageTextActionCreator = (text: string) => (new Action(types.UPDATE_NEW_MESSAGE_TEXT, text))
+export const sendMessageCreator = () => (new Action(types.SEND_MESSAGE))
+export const updateNewMessageCreator = (text: string) => (new Action(types.UPDATE_NEW_MESSAGE_TEXT, text))
 
 // store.subscribe()
 

@@ -2,14 +2,14 @@ import React, {useRef} from 'react'
 import styles from './MyPosts.module.scss'
 import PostItem from './Post/Post'
 import Post from '../../../models'
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/store'
+import {addPostCreator, updateNewPostCreator} from '../../../redux/store'
 
 function MyPosts(props: any) {
     const textArea = useRef<HTMLTextAreaElement>(null)
 
-    const addPost = () => props.dispatch(addPostActionCreator())
+    const addPost = () => props.dispatch(addPostCreator())
 
-    const onPostChange = () => props.dispatch(updateNewPostTextActionCreator(textArea.current!!.value))
+    const onPostChange = () => props.dispatch(updateNewPostCreator(textArea.current!!.value))
 
     return (
         <div className={styles.postsContainer}>
