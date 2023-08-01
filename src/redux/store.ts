@@ -1,5 +1,12 @@
 import Store, {State, Post, Message, Action} from '../models'
 
+enum types {
+    ADD_POST = 'ADD-POST',
+    UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
+    SEND_MESSAGE = 'SEND-MESSAGE',
+    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+}
+
 const _state: State = new State(
     {
         users: [
@@ -38,7 +45,7 @@ export const store: Store = new Store
     },
 
     (action: Action) => {
-        if (action.type === 'ADD-POST') {
+        if (action.type === types.ADD_POST) {
             let newPost: Post = {
                 id: 5,
                 text: _state.profilePage.newPostText,
@@ -47,10 +54,10 @@ export const store: Store = new Store
             _state.profilePage.posts.push(newPost)
             _state.profilePage.newPostText = ''
             rerenderEntireTree(store)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === types.UPDATE_NEW_POST_TEXT) {
             _state.profilePage.newPostText = action.newText!!
             rerenderEntireTree(store)
-        } else if (action.type === 'SEND-MESSAGE') {
+        } else if (action.type === types.SEND_MESSAGE) {
             let newMessage: Message = {
                 id: 5,
                 text: _state.messagesPage.newMessageText,
@@ -58,13 +65,19 @@ export const store: Store = new Store
             _state.messagesPage.messages.push(newMessage)
             _state.messagesPage.newMessageText = ''
             rerenderEntireTree(store)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+        } else if (action.type === types.UPDATE_NEW_MESSAGE_TEXT) {
             _state.messagesPage.newMessageText = action.newText!!
             rerenderEntireTree(store)
         }
     }
 )
 
-store.subscribe()
+export const addPostActionCreator = () => (new Action(types.ADD_POST))
+export const updateNewPostTextActionCreator = (text: string) => (new Action(types.UPDATE_NEW_POST_TEXT, text))
+
+export const sendMessageActionCreator = () => (new Action(types.SEND_MESSAGE))
+export const updateNewMessageTextActionCreator = (text: string) => (new Action(types.UPDATE_NEW_MESSAGE_TEXT, text))
+
+// store.subscribe()
 
 export default store
