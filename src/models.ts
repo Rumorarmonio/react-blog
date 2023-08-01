@@ -83,7 +83,6 @@ export default class Store {
     subscribe: Function
     dispatch: Function
 
-
     constructor(state: State, subscribe: Function, dispatch: Function) {
         this.#state = state
         this.subscribe = subscribe

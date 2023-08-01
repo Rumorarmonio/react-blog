@@ -1,11 +1,7 @@
-import Store, {State, Post, Message, Action} from '../models'
-
-enum types {
-    ADD_POST = 'ADD-POST',
-    UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
-    SEND_MESSAGE = 'SEND-MESSAGE',
-    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-}
+import Store, {State, Action} from '../models'
+import profileReducer from './profileReducer'
+import dialogsReducer from './dialogsReducer'
+import sidebarReducer from './sidebarReducer'
 
 const _state: State = new State(
     {
@@ -45,33 +41,13 @@ export const store: Store = new Store
     },
 
     (action: Action) => {
-        if (action.type === types.ADD_POST) {
-            _state.profilePage.posts.push(
-                new Post(5, _state.profilePage.newPostText, 0)
-            )
-            _state.profilePage.newPostText = ''
-            rerenderEntireTree(store)
-        } else if (action.type === types.UPDATE_NEW_POST_TEXT) {
-            _state.profilePage.newPostText = action.newText!!
-            rerenderEntireTree(store)
-        } else if (action.type === types.SEND_MESSAGE) {
-            _state.messagesPage.messages.push(
-                new Message(5, _state.messagesPage.newMessageText)
-            )
-            _state.messagesPage.newMessageText = ''
-            rerenderEntireTree(store)
-        } else if (action.type === types.UPDATE_NEW_MESSAGE_TEXT) {
-            _state.messagesPage.newMessageText = action.newText!!
-            rerenderEntireTree(store)
-        }
+        _state.profilePage = profileReducer(_state.profilePage, action)
+        _state.messagesPage = dialogsReducer(_state.messagesPage, action)
+        _state.sidebar = sidebarReducer(_state.sidebar, action)
+
+        rerenderEntireTree(store)
     }
 )
-
-export const addPostCreator = () => (new Action(types.ADD_POST))
-export const updateNewPostCreator = (text: string) => (new Action(types.UPDATE_NEW_POST_TEXT, text))
-
-export const sendMessageCreator = () => (new Action(types.SEND_MESSAGE))
-export const updateNewMessageCreator = (text: string) => (new Action(types.UPDATE_NEW_MESSAGE_TEXT, text))
 
 // store.subscribe()
 

@@ -2,7 +2,7 @@ import React, {useRef} from 'react'
 import styles from './MyPosts.module.scss'
 import PostItem from './Post/Post'
 import Post from '../../../models'
-import {addPostCreator, updateNewPostCreator} from '../../../redux/store'
+import {addPostCreator, updateNewPostCreator} from '../../../redux/profileReducer'
 
 function MyPosts(props: any) {
     const textArea = useRef<HTMLTextAreaElement>(null)

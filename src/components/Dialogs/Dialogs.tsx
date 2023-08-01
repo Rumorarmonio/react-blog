@@ -3,7 +3,7 @@ import styles from './Dialogs.module.scss'
 import MessageItem from './Message/MessageItem'
 import Dialog from './Dialog/Dialog'
 import {Message, User} from '../../models'
-import {sendMessageCreator, updateNewMessageCreator} from '../../redux/store'
+import {sendMessageCreator, updateNewMessageCreator} from '../../redux/dialogsReducer'
 
 function Dialogs(props: any) {
     const sendMessage = () => props.dispatch(sendMessageCreator())
