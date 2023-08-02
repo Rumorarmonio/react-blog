@@ -2,14 +2,18 @@ import React, {useRef} from 'react'
 import styles from './MyPosts.module.scss'
 import PostItem from './Post/Post'
 import Post from '../../../models'
-import {addPostCreator, updateNewPostCreator} from '../../../redux/profileReducer'
 
 function MyPosts(props: any) {
     const textArea = useRef<HTMLTextAreaElement>(null)
 
-    const addPost = () => props.dispatch(addPostCreator())
+    const addPost = () => props.addPost()
 
-    const onPostChange = () => props.dispatch(updateNewPostCreator(textArea.current!!.value))
+    const onPostChange = () => props.updateNewPostText(textArea.current!!.value)
+
+    const postsElements = props.posts.map((post: Post) =>
+        (
+            <PostItem post={post}/>
+        ))
 
     return (
         <div className={styles.postsContainer}>
@@ -19,11 +23,7 @@ function MyPosts(props: any) {
                 <button onClick={addPost}>Add post</button>
             </div>
             <div className={styles.posts}>
-                {
-                    props.posts.map((post: Post) => (
-                        <PostItem post={post}/>
-                    ))
-                }
+                {postsElements}
             </div>
         </div>
     )

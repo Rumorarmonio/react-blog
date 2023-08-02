@@ -13,7 +13,7 @@ const myLogger = (store: any) => (next: any) => (action: any) => {
 let reducers = combineReducers(
     {
         profilePage: profileReducer,
-        messagesPage: dialogsReducer,
+        dialogsPage: dialogsReducer,
         sidebar: sidebarReducer
     }
 )
