@@ -15,16 +15,16 @@ function App(props: any) {
     return (
         <div className="app">
             <Header/>
-            <Sidebar state={props.store.getState().sidebar}/>
+            <Sidebar/>
             <div className="content-container">
                 <Routes>
                     <Route path="/profile"
                            element={
-                               <Profile store={props.store}/>
+                               <Profile/>
                            }/>
                     <Route path="/dialogs/*"
                            element={
-                               <DialogsContainer store={props.store}/>
+                               <DialogsContainer/>
                            }/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/music" element={<Music/>}/>

@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {sendMessageCreator, updateNewMessageCreator} from '../../redux/dialogsReducer'
 import Dialogs from './Dialogs'
+import StoreContext from '../../StoreContext'
 
-function DialogsContainer(props: any) {
-    const state = props.store.getState().dialogsPage
+function DialogsContainer() {
+    const store = useContext(StoreContext)
 
-    const onSendMessageClick = () => props.store.dispatch(sendMessageCreator())
+    // const state = props.store.getState().dialogsPage
+    const state = store.getState().dialogsPage
 
-    const onNewMessageChange = (text: string) => props.store.dispatch(updateNewMessageCreator(text))
+    const onSendMessageClick = () => store.dispatch(sendMessageCreator())
+
+    const onNewMessageChange = (text: string) => store.dispatch(updateNewMessageCreator(text))
 
     return (
         <Dialogs

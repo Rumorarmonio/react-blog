@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useRef} from 'react'
+import React, {SyntheticEvent} from 'react'
 import styles from './Dialogs.module.scss'
 import MessageItem from './Message/MessageItem'
 import Dialog from './Dialog/Dialog'

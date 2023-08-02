@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styles from './Sidebar.module.scss'
 import {NavLink} from 'react-router-dom'
 import Friends from './Friends/Friends'
+import StoreContext from '../../StoreContext'
 
-function Sidebar(props: any) {
+function Sidebar() {
+    const store = useContext(StoreContext)
     return (
         <aside className={styles.sidebar}>
             <nav>
@@ -25,7 +27,8 @@ function Sidebar(props: any) {
                     </li>
                 </ul>
             </nav>
-            <Friends friends={props.state.friends}/>
+            {/*TODO: container for friends component*/}
+            <Friends friends={store.getState().sidebar.friends}/>
         </aside>
     )
 }

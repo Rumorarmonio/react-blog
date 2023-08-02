@@ -3,11 +3,11 @@ import styles from './Profile.module.scss'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 
-function Profile(props: any) {
+function Profile() {
     return (
         <section className={styles.content}>
             <ProfileInfo/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer/>
         </section>
     )
 }
