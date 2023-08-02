@@ -5,26 +5,32 @@ enum types {
     UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 }
 
-function profileReducer(state: any, action: Action) {
+let initialState = {
+    posts: [
+        {id: 1, text: 'Hi girls and hi zyabls', likes: 15},
+        {id: 2, text: 'And hi babybon my little zyabls', likes: 20},
+        {id: 3, text: 'It\'s my first post!', likes: 25}
+    ],
+    newPostText: ''
+}
+
+function profileReducer(state: any = initialState, action: Action) {
     switch (action.type) {
-        case types.ADD_POST: {
+        case types.ADD_POST:
             state.posts.push(
                 new Post(5, state.newPostText, 0)
             )
             state.newPostText = ''
             return state
-        }
-        case types.UPDATE_NEW_POST_TEXT: {
+        case types.UPDATE_NEW_POST_TEXT:
             state.newPostText = action.newText
             return state
-        }
-        default: {
+        default:
             return state
-        }
     }
 }
 
-export const addPostCreator = () => new Action(types.ADD_POST)
-export const updateNewPostCreator = (text: string) => new Action(types.UPDATE_NEW_POST_TEXT, text)
+export const addPostCreator = () => ({type: types.ADD_POST})
+export const updateNewPostCreator = (text: string) => ({type: types.UPDATE_NEW_POST_TEXT, newText: text})
 
 export default profileReducer

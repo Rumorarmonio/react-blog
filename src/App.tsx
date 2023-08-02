@@ -14,19 +14,19 @@ function App(props: any) {
     return (
         <div className="app">
             <Header/>
-            <Sidebar state={props.store.getState.sidebar}/>
+            <Sidebar state={props.store.getState().sidebar}/>
             <div className="content-container">
                 <Routes>
                     <Route path="/profile"
                            element={
                                <Profile
-                                   profilePage={props.store.getState.profilePage}
+                                   profilePage={props.store.getState().profilePage}
                                    dispatch={props.store.dispatch}/>
                            }/>
                     <Route path="/dialogs/*"
                            element={
                                <Dialogs
-                                   messagesPage={props.store.getState.messagesPage}
+                                   messagesPage={props.store.getState().messagesPage}
                                    dispatch={props.store.dispatch}/>
                            }/>
                     <Route path="/news" element={<News/>}/>

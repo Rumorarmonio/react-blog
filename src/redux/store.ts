@@ -43,7 +43,7 @@ export const store: Store = new Store
     (action: Action) => {
         _state.profilePage = profileReducer(_state.profilePage, action)
         _state.messagesPage = dialogsReducer(_state.messagesPage, action)
-        _state.sidebar = sidebarReducer(_state.sidebar, action)
+        // _state.sidebar = sidebarReducer(_state.sidebar, action)
 
         rerenderEntireTree(store)
     }
