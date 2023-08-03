@@ -16,15 +16,19 @@ let initialState = {
 
 function profileReducer(state: any = initialState, action: Action) {
     switch (action.type) {
-        case types.ADD_POST:
-            state.posts.push(
-                new Post(5, state.newPostText, 0)
-            )
-            state.newPostText = ''
-            return state
-        case types.UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            return state
+        case types.ADD_POST: {
+            const stateCopy = {...state}
+            // TODO: deep copy
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.push(new Post(5, state.newPostText, 0))
+            stateCopy.newPostText = ''
+            return stateCopy
+        }
+        case types.UPDATE_NEW_POST_TEXT: {
+            const stateCopy = {...state}
+            stateCopy.newPostText = action.newText
+            return stateCopy
+        }
         default:
             return state
     }

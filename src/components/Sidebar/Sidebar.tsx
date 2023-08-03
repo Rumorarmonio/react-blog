@@ -27,7 +27,7 @@ function Sidebar() {
                     </li>
                 </ul>
             </nav>
-            {/*TODO: container for friends component*/}
+            {/*TODO: container for friends component using react-redux*/}
             <Friends friends={store.getState().sidebar.friends}/>
         </aside>
     )

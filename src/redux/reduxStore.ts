@@ -19,4 +19,12 @@ let reducers = combineReducers(
 
 let store = createStore(reducers, {}, applyMiddleware(logger/*thunk*/))
 
+// ???
+declare const window: Window &
+    typeof globalThis & {
+    store: any
+}
+
+window.store = store
+
 export default store
