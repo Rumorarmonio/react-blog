@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Friends.module.scss'
-import {User} from '../../../models'
 
 function Friends(props: any) {
     return (
@@ -11,7 +10,7 @@ function Friends(props: any) {
                     props.friends.map((friend: any) => (
                         <div className={styles.friend}>
                             <img className={styles.avatar} src={friend.avatar}/>
-                            <span>{friend.fullName}</span>
+                            <span>{friend.name}</span>
                         </div>
                     ))
                 }
