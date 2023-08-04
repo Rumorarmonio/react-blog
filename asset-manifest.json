@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-blog/static/css/main.43b6398a.css",
-    "main.js": "/react-blog/static/js/main.71ae3a74.js",
+    "main.css": "/react-blog/static/css/main.f8e82405.css",
+    "main.js": "/react-blog/static/js/main.5c9ef74a.js",
     "static/js/787.a361b86b.chunk.js": "/react-blog/static/js/787.a361b86b.chunk.js",
     "static/media/blog-logo.png": "/react-blog/static/media/blog-logo.afb0a1dd82d1002c544c.png",
     "index.html": "/react-blog/index.html",
-    "main.43b6398a.css.map": "/react-blog/static/css/main.43b6398a.css.map",
-    "main.71ae3a74.js.map": "/react-blog/static/js/main.71ae3a74.js.map",
+    "main.f8e82405.css.map": "/react-blog/static/css/main.f8e82405.css.map",
+    "main.5c9ef74a.js.map": "/react-blog/static/js/main.5c9ef74a.js.map",
     "787.a361b86b.chunk.js.map": "/react-blog/static/js/787.a361b86b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.43b6398a.css",
-    "static/js/main.71ae3a74.js"
+    "static/css/main.f8e82405.css",
+    "static/js/main.5c9ef74a.js"
   ]
 }
