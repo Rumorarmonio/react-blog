@@ -7,8 +7,9 @@ import {Message, User} from '../../models'
 function Dialogs(props: any) {
     const state = props.dialogsPage
 
-    let dialogsElements = state.users.map((user: User) => <Dialog user={user}/>)
-    let messagesElements = state.messages.map((message: Message) => <MessageItem message={message}/>)
+    let dialogsElements = state.users.map((user: User) => <Dialog key={user.id} user={user}/>)
+
+    let messagesElements = state.messages.map((message: Message) => <MessageItem key={message.id} message={message}/>)
 
     const sendMessage = () => props.sendMessage()
 

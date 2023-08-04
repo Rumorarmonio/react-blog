@@ -10,10 +10,7 @@ function MyPosts(props: any) {
 
     const onPostChange = () => props.updateNewPostText(textArea.current!!.value)
 
-    const postsElements = props.posts.map((post: Post) =>
-        (
-            <PostItem post={post}/>
-        ))
+    const postsElements = props.posts.map((post: Post) => <PostItem post={post}/>)
 
     return (
         <div className={styles.postsContainer}>

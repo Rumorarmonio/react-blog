@@ -24,21 +24,25 @@ let initialState = {
 
 function dialogsReducer(state: any = initialState, action: Action) {
     switch (action.type) {
-        case types.UPDATE_NEW_MESSAGE_TEXT: {
-            const stateCopy = {...state}
-            stateCopy.newMessageText = action.newText!!
-            return stateCopy
-        }
-        case types.SEND_MESSAGE: {
-            const stateCopy = {...state}
-            const maxId = stateCopy.messages.reduce(
-                (previous: Message, current: Message) =>
-                    previous.id > current.id ? previous : current
-            ).id
-            stateCopy.messages.push(new Message(maxId + 1, state.newMessageText))
-            stateCopy.newMessageText = ''
-            return stateCopy
-        }
+        case types.UPDATE_NEW_MESSAGE_TEXT:
+            return {
+                ...state,
+                newMessageText: action.newText
+            }
+        case types.SEND_MESSAGE:
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [
+                    ...state.messages,
+                    new Message(
+                        state.messages.reduce(
+                            (previous: Message, current: Message) => previous.id > current.id ? previous : current
+                        ).id + 1,
+                        state.newMessageText
+                    )
+                ]
+            }
         default:
             return state
     }
