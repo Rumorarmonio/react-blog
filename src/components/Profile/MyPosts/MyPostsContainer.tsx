@@ -3,19 +3,17 @@ import {addPostCreator, updateNewPostCreator} from '../../../redux/profileReduce
 import MyPosts from './MyPosts'
 import {connect} from 'react-redux'
 
-const mapStateToProps = (state: any) => {
-    return {
+const mapStateToProps = (state: any) =>
+    ({
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText
-    }
-}
+    })
 
-const mapDispatchToProps = (dispatch: Function) => {
-    return {
+const mapDispatchToProps = (dispatch: Function) =>
+    ({
         updateNewPostText: (text: string) => dispatch(updateNewPostCreator(text)),
         addPost: () => dispatch(addPostCreator())
-    }
-}
+    })
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 

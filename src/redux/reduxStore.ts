@@ -2,6 +2,7 @@ import {applyMiddleware, combineReducers, legacy_createStore as createStore} fro
 import profileReducer from './profileReducer'
 import dialogsReducer from './dialogsReducer'
 import sidebarReducer from './sidebarReducer'
+import usersReducer from './usersReducer'
 import logger from 'redux-logger'
 
 const myLogger = (store: any) => (next: any) => (action: any) => {
@@ -13,6 +14,7 @@ let reducers = combineReducers(
     {
         profilePage: profileReducer,
         dialogsPage: dialogsReducer,
+        usersPage: usersReducer,
         sidebar: sidebarReducer
     }
 )

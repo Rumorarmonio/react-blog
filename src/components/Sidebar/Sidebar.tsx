@@ -17,6 +17,9 @@ function Sidebar() {
                         <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/dialogs">Messages</NavLink>
                     </li>
                     <li>
+                        <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/users">Users</NavLink>
+                    </li>
+                    <li>
                         <NavLink className={navData => navData.isActive ? styles.active : styles.link} to="/news">News</NavLink>
                     </li>
                     <li>

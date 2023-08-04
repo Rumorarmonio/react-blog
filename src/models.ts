@@ -12,13 +12,19 @@ export class Post {
 
 export class User {
     id: number
-    name: string
-    avatar: string
+    photoUrl: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: { city: string, country: string }
 
-    constructor(id: number, name: string, avatar: string) {
+    constructor(id: number, photoUrl: string, followed: boolean, fullName: string, status: string, location: { city: string; country: string }) {
         this.id = id
-        this.name = name
-        this.avatar = avatar
+        this.photoUrl = photoUrl
+        this.followed = followed
+        this.fullName = fullName
+        this.status = status
+        this.location = location
     }
 }
 
@@ -63,10 +69,12 @@ export class State {
 export class Action {
     type: string
     newText?: string
+    userId?: number
 
-    constructor(type: string, newText?: string) {
+    constructor(type: string, newText?: string, userId?: number) {
         this.type = type
         this.newText = newText
+        this.userId = userId
     }
 }
 

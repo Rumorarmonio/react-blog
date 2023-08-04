@@ -8,10 +8,10 @@ function Friends(props: any) {
             <h3 className={styles.header}>Friends</h3>
             <div className={styles.container}>
                 {
-                    props.friends.map((friend: User) => (
+                    props.friends.map((friend: any) => (
                         <div className={styles.friend}>
                             <img className={styles.avatar} src={friend.avatar}/>
-                            <span>{friend.name}</span>
+                            <span>{friend.fullName}</span>
                         </div>
                     ))
                 }
