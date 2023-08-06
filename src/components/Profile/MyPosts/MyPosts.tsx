@@ -16,8 +16,8 @@ function MyPosts(props: any) {
         <div className={styles.postsContainer}>
             <h3 className={styles.postsHeader}>My posts</h3>
             <div className={styles.postForm}>
-                <textarea onChange={onPostChange} ref={textArea} value={props.newPostText}/>
-                <button onClick={addPost}>Add post</button>
+                <textarea className={styles.postInput} onChange={onPostChange} ref={textArea} value={props.newPostText}/>
+                <button className={styles.postButton} onClick={addPost}>Add post!</button>
             </div>
             <div className={styles.posts}>
                 {postsElements}

@@ -1,7 +1,9 @@
+@import '../../assets/styles/variables.scss';
+
 .sidebar {
     grid-area: sidebar;
     padding: 20px;
-    background-color: #baffff;
+    background-color: $light-blue;
 }
 
 .links {
@@ -14,5 +16,5 @@
 }
 
 .active {
-    color: #eebaff;
+    color: $brown;
 }

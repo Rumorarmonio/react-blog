@@ -1,8 +1,10 @@
+@import "./src/assets/styles/variables";
+
 * {
     margin: 0;
     padding: 0;
     font: 20px/1.2 "Roboto", sans-serif;
-    color: #222;
+    color: $dark-grey;
     text-decoration: none;
     list-style: none;
 }
@@ -24,5 +26,5 @@
 .content-container {
     grid-area: content;
     padding: 20px;
-    background-color: #fff4ba;
+    background-color: $white;
 }

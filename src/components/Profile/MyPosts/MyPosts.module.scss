@@ -1,9 +1,33 @@
+@import '../../../assets/styles/variables.scss';
+
 .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.postsHeader {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.postForm {
+    width: 500px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.postsHeader {
-    font-size: 32px;
+.postInput {
+    height: 100px;
+    padding: 10px;
+    resize: none;
+}
+
+.postButton {
+    width: 200px;
+    height: 30px;
+    background-color: $pink;
+    align-self: end;
 }

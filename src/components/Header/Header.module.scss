@@ -1,7 +1,9 @@
+@import '../../assets/styles/variables.scss';
+
 .header {
     grid-area: header;
     padding: 10px;
-    background-color: #baffba;
+    background-color: $light-blue;
 }
 
 .logo {

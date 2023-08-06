@@ -1,14 +1,16 @@
+@import '../../../assets/styles/variables.scss';
+
 .dialog {
     padding: 5px;
     display: flex;
     align-items: center;
     gap: 5px;
-    border: 2px solid #aaa;
+    border: 2px solid $light-grey;
     border-radius: 5px;
 }
 
 .active {
-    color: #eebaff;
+    color: $brown;
 }
 
 .inactive {

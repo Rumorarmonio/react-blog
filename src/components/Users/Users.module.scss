@@ -1,8 +1,58 @@
+@import '../../assets/styles/variables.scss';
+
+.users {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 20px;
+    border: 2px solid $light-grey;
+    border-right: 0 none;
+    border-left: 0 none;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.userHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.location {
+
+}
+
+.userName {
+    font-size: 25px;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    background-color: $pink;
+}
+
 .userPhoto {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.pagination {
+    width: 300px;
+    margin: 0 auto 30px auto;
 }
 
 .active {
