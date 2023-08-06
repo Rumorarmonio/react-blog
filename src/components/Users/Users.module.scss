@@ -1,5 +1,11 @@
 @import '../../assets/styles/variables.scss';
 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .users {
     display: flex;
     flex-direction: column;
@@ -41,6 +47,7 @@
     width: 100px;
     height: 30px;
     background-color: $pink;
+    cursor: pointer;
 }
 
 .userPhoto {
@@ -51,8 +58,8 @@
 }
 
 .pagination {
-    width: 300px;
-    margin: 0 auto 30px auto;
+    display: inline-block;
+    margin: auto;
 }
 
 .active {

@@ -2,6 +2,51 @@ import React from 'react'
 import Users from './Users'
 import {connect} from 'react-redux'
 import {followAC, setCurrentPageAC, setUsersAC, setUsersTotalCountAC, unfollowAC} from '../../redux/usersReducer'
+import axios from 'axios'
+
+type MyProps = {
+    users: any,
+    totalUsersCount: number,
+    pageSize: number,
+    currentPage: number,
+    follow: Function,
+    unfollow: Function,
+    setUsers: Function,
+    setCurrentPage: Function,
+    setTotalUsersCount: Function
+}
+
+type MyState = { value: string }
+
+class UsersContainer extends React.Component<MyProps, MyState> {
+    componentDidMount() {
+        // TODO: Access has been blocked by CORS policy
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
+    }
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    render() {
+        return <Users totalUsersCount={this.props.totalUsersCount}
+                      pageSize={this.props.pageSize}
+                      currentPage={this.props.currentPage}
+                      onPageChanged={this.onPageChanged}
+                      users={this.props.users}
+                      follow={this.props.follow}
+                      unfollow={this.props.unfollow}
+        />
+    }
+}
 
 const mapStateToProps = (state: any) => (
     {
@@ -22,4 +67,4 @@ const mapDispatchToProps = (dispatch: Function) => (
     }
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
