@@ -4,3 +4,13 @@
     object-fit: cover;
     border-radius: 50%;
 }
+
+.active {
+    font-weight: bold;
+    cursor: default;
+}
+
+.inactive {
+    font-weight: normal;
+    cursor: pointer;
+}
