@@ -5,7 +5,8 @@ enum types {
     UNFOLLOW = 'UNFOLLOW',
     SET_USERS = 'SET_USERS',
     SET_CURRENT_PAGE = 'SET_CURRENT_PAGE',
-    SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+    SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT',
+    TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 }
 
 let initialState = {
@@ -46,6 +47,8 @@ function usersReducer(state: any = initialState, action: any) {
             return {...state, currentPage: action.currentPage}
         case types.SET_TOTAL_USERS_COUNT:
             return {...state, totalUsersCount: action.totalUsersCount}
+        case types.TOGGLE_IS_FETCHING:
+            return {...state, isFetching: action.isFetching}
         default:
             return state
     }
@@ -56,5 +59,6 @@ export const unfollowAC = (userId: number) => ({type: types.UNFOLLOW, userId})
 export const setUsersAC = (users: User[]) => ({type: types.SET_USERS, users})
 export const setCurrentPageAC = (currentPage: number) => ({type: types.SET_CURRENT_PAGE, currentPage})
 export const setUsersTotalCountAC = (totalUsersCount: number) => ({type: types.SET_TOTAL_USERS_COUNT, totalUsersCount})
+export const toggleIsFetching = (isFetching: boolean) => ({type: types.TOGGLE_IS_FETCHING, isFetching})
 
 export default usersReducer
