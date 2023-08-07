@@ -3,9 +3,11 @@ import Profile from './Profile'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {setUserProfile} from '../../redux/profileReducer'
+import {useLocation, useNavigate, useParams} from 'react-router-dom'
 
 type MyProps = {
     profile: any,
+    router: any,
     setUserProfile: Function
 }
 
@@ -13,7 +15,11 @@ type MyState = { value: string }
 
 class ProfileContainer extends React.Component<MyProps, MyState> {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+        let userId: number = this.props.router.params.userId
+        if (!userId) {
+            userId = 2
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
             .then(response => {
                 this.props.setUserProfile(response.data)
             })
@@ -30,4 +36,20 @@ let mapStateToProps = (state: any) => ({
     profile: state.profilePage.profile
 })
 
-export default connect(mapStateToProps, {setUserProfile})(ProfileContainer)
+function withRouter(Component: any) {
+    function ComponentWithRouterProp(props: any) {
+        let location = useLocation()
+        let navigate = useNavigate()
+        let params = useParams()
+        return (
+            <Component
+                {...props}
+                router={{location, navigate, params}}
+            />
+        )
+    }
+
+    return ComponentWithRouterProp
+}
+
+export default connect(mapStateToProps, {setUserProfile})(withRouter(ProfileContainer))

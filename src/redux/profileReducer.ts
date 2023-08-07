@@ -1,4 +1,4 @@
-import {Action, Post} from '../models'
+import {Post} from '../models'
 
 enum types {
     ADD_POST = 'ADD-POST',
@@ -12,7 +12,8 @@ let initialState = {
         {id: 2, text: 'And hi babybon my little zyabls', likes: 20},
         {id: 3, text: 'It\'s my first post!', likes: 25}
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 }
 
 function profileReducer(state: any = initialState, action: any) {
