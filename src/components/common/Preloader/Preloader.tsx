@@ -3,7 +3,7 @@ import preloader from '../../../assets/images/preloader.gif'
 
 let Preloader = (props: any) => {
     return (
-        <img src={preloader}/>
+        <img src={preloader} alt='Please wait!'/>
     )
 }
 

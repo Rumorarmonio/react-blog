@@ -1,14 +1,13 @@
 import React from 'react'
-import styles from './Profile.module.scss'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 
-function Profile() {
+const Profile = (props: any) => {
     return (
-        <section className={styles.content}>
-            <ProfileInfo/>
+        <div>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
-        </section>
+        </div>
     )
 }
 

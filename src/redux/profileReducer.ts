@@ -2,7 +2,8 @@ import {Action, Post} from '../models'
 
 enum types {
     ADD_POST = 'ADD-POST',
-    UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+    UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
+    SET_USER_PROFILE = 'SET_USER_PROFILE',
 }
 
 let initialState = {
@@ -14,7 +15,7 @@ let initialState = {
     newPostText: ''
 }
 
-function profileReducer(state: any = initialState, action: Action) {
+function profileReducer(state: any = initialState, action: any) {
     switch (action.type) {
         case types.UPDATE_NEW_POST_TEXT:
             return {
@@ -36,12 +37,15 @@ function profileReducer(state: any = initialState, action: Action) {
                     )
                 ]
             }
+        case types.SET_USER_PROFILE:
+            return {...state, profile: action.profile}
         default:
             return state
     }
 }
 
 export const addPostCreator = () => ({type: types.ADD_POST})
+export const setUserProfile = (profile: any) => ({type: types.SET_USER_PROFILE, profile})
 export const updateNewPostCreator = (text: string) => ({type: types.UPDATE_NEW_POST_TEXT, newText: text})
 
 export default profileReducer
