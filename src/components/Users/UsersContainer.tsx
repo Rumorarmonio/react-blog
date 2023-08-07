@@ -1,9 +1,10 @@
 import React from 'react'
 import Users from './Users'
 import {connect} from 'react-redux'
-import {followAC, setCurrentPageAC, setUsersAC, setUsersTotalCountAC, toggleIsFetching, unfollowAC} from '../../redux/usersReducer'
+
 import axios from 'axios'
 import Preloader from '../common/Preloader/Preloader'
+import {follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow} from '../../redux/usersReducer'
 
 type MyProps = {
     users: any,
@@ -69,15 +70,13 @@ const mapStateToProps = (state: any) => (
     }
 )
 
-const mapDispatchToProps = (dispatch: Function) => (
+export default connect(mapStateToProps,
     {
-        follow: (userId: number) => dispatch(followAC(userId)),
-        unfollow: (userId: number) => dispatch(unfollowAC(userId)),
-        setUsers: (users: any) => dispatch(setUsersAC(users)),
-        setCurrentPage: (pageNumber: number) => dispatch(setCurrentPageAC(pageNumber)),
-        setTotalUsersCount: (totalCount: number) => dispatch(setUsersTotalCountAC(totalCount)),
-        toggleIsFetching: (isFetching: boolean) => dispatch(toggleIsFetching(isFetching))
+        follow,
+        unfollow,
+        setUsers,
+        setCurrentPage,
+        setTotalUsersCount,
+        toggleIsFetching
     }
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+)(UsersContainer)
