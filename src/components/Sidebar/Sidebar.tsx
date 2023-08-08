@@ -3,6 +3,7 @@ import styles from './Sidebar.module.scss'
 import {NavLink} from 'react-router-dom'
 import Friends from './Friends/Friends'
 import StoreContext from '../../StoreContext'
+import FriendsContainer from './Friends/FriendsContainer'
 
 function Sidebar() {
     const store = useContext(StoreContext)
@@ -30,8 +31,7 @@ function Sidebar() {
                     </li>
                 </ul>
             </nav>
-            {/*TODO: container for friends component using react-redux*/}
-            <Friends friends={store.getState().sidebar.friends}/>
+            <FriendsContainer/>
         </aside>
     )
 }

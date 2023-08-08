@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './ProfileInfo.module.scss'
 import Preloader from '../../common/Preloader/Preloader'
+import ProfilePicture from '../../common/ProfilePicture/ProfilePicture'
 
 function ProfileInfo(props: any) {
     if (!props.profile) {
@@ -9,10 +10,14 @@ function ProfileInfo(props: any) {
 
     return (
         <>
-            {/*TODO: pfp component*/}
             <img className={styles.image} src="https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg" alt="img"/>
             <div className={styles.profileInfo}>
-                <img className={styles.userImage} src={props.profile.photos.large} alt="User"/>
+                <ProfilePicture
+                    user={props.profile}
+                    width="150px"
+                    height="150px"
+                    borderRadius="30px"
+                />
                 <p className={styles.description}>
                     {props.profile.fullName}
                     <br/>
