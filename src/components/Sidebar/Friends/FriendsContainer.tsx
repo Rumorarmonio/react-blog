@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import Preloader from '../../common/Preloader/Preloader'
 import {setUsers, toggleIsFetching} from '../../../redux/friendsReducer'
+import {usersAPI} from '../../../api/API'
 
 type MyProps = {
     users: any,
@@ -17,11 +18,12 @@ type MyState = { value: string }
 
 class FriendsContainer extends React.Component<MyProps, MyState> {
     componentDidMount() {
+        this.props.toggleIsFetching(true)
         // TODO: isFetching is always false
-        this.props.toggleIsFetching(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
+        usersAPI.getUsers(1, 6)
+            .then(data => {
+                this.props.toggleIsFetching(false)
+                this.props.setUsers(data.items)
             })
     }
 

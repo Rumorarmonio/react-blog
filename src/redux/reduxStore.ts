@@ -18,6 +18,7 @@ let reducers = combineReducers(
         profilePage: profileReducer,
         dialogsPage: dialogsReducer,
         usersPage: usersReducer,
+        // TODO: reducer for a sidebar or for a friends block?
         sidebar: sidebarReducer,
         friendsBlock: friendsReducer,
         auth: authReducer
