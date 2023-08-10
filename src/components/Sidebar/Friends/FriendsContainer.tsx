@@ -1,7 +1,6 @@
 import React from 'react'
 import Friends from './Friends'
 import {connect} from 'react-redux'
-import axios from 'axios'
 import Preloader from '../../common/Preloader/Preloader'
 import {setUsers, toggleIsFetching} from '../../../redux/friendsReducer'
 import {usersAPI} from '../../../api/API'
@@ -30,6 +29,7 @@ class FriendsContainer extends React.Component<MyProps, MyState> {
     render() {
         return (
             <>
+                {/*TODO: show preloader*/}
                 {this.props.isFetching ? <Preloader/> : null}
                 <Friends friends={this.props.users}/>
             </>

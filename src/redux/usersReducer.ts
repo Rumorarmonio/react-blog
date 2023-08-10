@@ -6,14 +6,17 @@ enum types {
     SET_USERS = 'SET_USERS',
     SET_CURRENT_PAGE = 'SET_CURRENT_PAGE',
     SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT',
-    TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+    TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING',
+    TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 }
 
 let initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: true,
+    followingInProgress: []
 }
 
 function usersReducer(state: any = initialState, action: any) {
@@ -42,13 +45,19 @@ function usersReducer(state: any = initialState, action: any) {
             }
         case types.SET_USERS:
             return {...state, users: action.users}
-        // return {...state, users: [...state.users, ...action.users]}
         case types.SET_CURRENT_PAGE:
             return {...state, currentPage: action.currentPage}
         case types.SET_TOTAL_USERS_COUNT:
             return {...state, totalUsersCount: action.totalUsersCount}
         case types.TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
+        case types.TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter((id: number) => id != action.userId)
+            }
         default:
             return state
     }
@@ -60,5 +69,6 @@ export const setUsers = (users: User[]) => ({type: types.SET_USERS, users})
 export const setCurrentPage = (currentPage: number) => ({type: types.SET_CURRENT_PAGE, currentPage})
 export const setTotalUsersCount = (totalUsersCount: number) => ({type: types.SET_TOTAL_USERS_COUNT, totalUsersCount})
 export const toggleIsFetching = (isFetching: boolean) => ({type: types.TOGGLE_IS_FETCHING, isFetching})
+export const toggleFollowingProgress = (isFetching: boolean, userId: number) => ({type: types.TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
 
 export default usersReducer
