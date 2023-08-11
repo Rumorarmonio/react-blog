@@ -1,3 +1,5 @@
+import {authAPI} from '../api/API'
+
 enum types {
     SET_USER_DATA = 'SET_USER_DATA'
 }
@@ -22,7 +24,18 @@ const authReducer = (state = initialState, action: any) => {
     }
 }
 
+export const setAuthUserData = (id: number, login: string, email: string) => ({type: types.SET_USER_DATA, data: {id, login, email}})
 
-export const setAuthUserData = (id: number, login: string, email: string,) => ({type: types.SET_USER_DATA, data: {id, login, email}})
+export const getAuthUserData = () => {
+    return (dispatch: Function) => {
+        authAPI.getMe()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, login, email} = response.data.data
+                    dispatch(setAuthUserData(id, login, email))
+                }
+            })
+    }
+}
 
 export default authReducer

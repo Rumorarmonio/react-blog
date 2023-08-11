@@ -26,8 +26,7 @@ function usersReducer(state: any = initialState, action: any) {
             return {
                 ...state,
                 users: state.users.map((user: User) => {
-                    // @ts-ignore
-                    if (user.id === action.userId) {
+                    if ((user as any).id === action.userId) {
                         return {...user, followed: true}
                     }
                     return user
@@ -37,8 +36,7 @@ function usersReducer(state: any = initialState, action: any) {
             return {
                 ...state,
                 users: state.users.map((user: User) => {
-                    // @ts-ignore
-                    if (user.id === action.userId) {
+                    if ((user as any).id === action.userId) {
                         return {...user, followed: false}
                     }
                     return user
@@ -97,6 +95,7 @@ export const follow = (userId: number) => {
             })
     }
 }
+
 export const unfollow = (userId: number) => {
     return (dispatch: Function) => {
         dispatch(toggleFollowingProgress(true, userId))

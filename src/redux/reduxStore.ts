@@ -4,7 +4,6 @@ import dialogsReducer from './dialogsReducer'
 import sidebarReducer from './sidebarReducer'
 import usersReducer from './usersReducer'
 import logger from 'redux-logger'
-import friendsReducer from './friendsReducer'
 import authReducer from './authReducer'
 import thunkMiddleware from 'redux-thunk'
 
@@ -13,15 +12,14 @@ const myLogger = (store: any) => (next: any) => (action: any) => {
     next(action)
 }
 
-// TODO: short names
+
 let reducers = combineReducers(
     {
+        // TODO: short name
         profilePage: profileReducer,
-        dialogsPage: dialogsReducer,
-        usersPage: usersReducer,
-        // TODO: reducer for a sidebar or for a friends block?
+        dialogs: dialogsReducer,
+        users: usersReducer,
         sidebar: sidebarReducer,
-        friendsBlock: friendsReducer,
         auth: authReducer
     }
 )

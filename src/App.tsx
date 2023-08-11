@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.scss'
-import Sidebar from './components/Sidebar/Sidebar'
 import Footer from './components/Footer/Footer'
 import {Route, Routes} from 'react-router-dom'
 import News from './components/News/News'
@@ -10,12 +9,13 @@ import DialogsContainer from './components/Dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
+import SidebarContainer from './components/Sidebar/SidebarContainer'
 
 function App() {
     return (
         <div className="app">
             <HeaderContainer/>
-            <Sidebar/>
+            <SidebarContainer/>
             <div className="content-container">
                 <Routes>
                     <Route path="/profile/:userId?" element={<ProfileContainer/>}/>

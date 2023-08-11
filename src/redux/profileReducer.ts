@@ -1,4 +1,5 @@
 import {Post} from '../models'
+import {usersAPI} from '../api/API'
 
 enum types {
     ADD_POST = 'ADD-POST',
@@ -48,5 +49,14 @@ function profileReducer(state: any = initialState, action: any) {
 export const addPostCreator = () => ({type: types.ADD_POST})
 export const setUserProfile = (profile: any) => ({type: types.SET_USER_PROFILE, profile})
 export const updateNewPostCreator = (text: string) => ({type: types.UPDATE_NEW_POST_TEXT, newText: text})
+
+export const getProfile = (id: number) => {
+    return (dispatch: Function) => {
+        usersAPI.getProfile(id)
+            .then(data => {
+                dispatch(setUserProfile(data))
+            })
+    }
+}
 
 export default profileReducer

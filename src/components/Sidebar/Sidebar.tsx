@@ -1,14 +1,13 @@
 import React, {useContext} from 'react'
 import styles from './Sidebar.module.scss'
 import {NavLink} from 'react-router-dom'
-import Friends from './Friends/Friends'
 import StoreContext from '../../StoreContext'
-import FriendsContainer from './Friends/FriendsContainer'
+import Friends from './Friends/Friends'
 
-function Sidebar() {
+function Sidebar(props: any) {
     const store = useContext(StoreContext)
     return (
-        <aside className={styles.sidebar}>
+        <>
             <nav>
                 <ul className={styles.links}>
                     <li>
@@ -31,8 +30,8 @@ function Sidebar() {
                     </li>
                 </ul>
             </nav>
-            <FriendsContainer/>
-        </aside>
+            <Friends users={props.users}/>
+        </>
     )
 }
 

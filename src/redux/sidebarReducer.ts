@@ -1,16 +1,28 @@
-import Action from '../models'
+import {User} from '../models'
+
+enum types {
+    SET_USERS = 'SET_USERS',
+    TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+}
 
 let initialState = {
-    friends: [
-        {id: 1, name: 'Daniel', avatar: 'https://yt3.googleusercontent.com/ytc/AOPolaTzK-nRd9dEvq83lpi8ecoANCboYK52hB6CmxO9=s900-c-k-c0x00ffffff-no-rj'},
-        {id: 2, name: 'Semen', avatar: 'https://tagankateatr.ru/iw600/pages/farada2.jpg'},
-        {id: 3, name: 'Andrey', avatar: 'https://static.tildacdn.com/tild3661-6365-4233-b165-613137313632/DSC_5406.jpg'},
-        {id: 4, name: 'Sasha', avatar: 'https://app.fide.com/upload/5071/210e8ab022596837122032918a1fc653.jpg'}
-    ]
+    users: [],
+    pageSize: 9,
+    currentPage: 1
 }
 
-const sidebarReducer = (state: any = initialState, action: Action) => {
-    return state
+const sidebarReducer = (state: any = initialState, action: any) => {
+    switch (action.type) {
+        case types.SET_USERS:
+            return {...state, users: action.users}
+        case types.TOGGLE_IS_FETCHING:
+            return {...state, isFetching: action.isFetching}
+        default:
+            return state
+    }
 }
+
+export const toggleIsFetching = (isFetching: boolean) => ({type: types.TOGGLE_IS_FETCHING, isFetching})
+export const setUsers = (users: User[]) => ({type: types.SET_USERS, users})
 
 export default sidebarReducer

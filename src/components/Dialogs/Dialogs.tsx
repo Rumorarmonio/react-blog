@@ -5,7 +5,7 @@ import Dialog from './Dialog/Dialog'
 import {Message, User} from '../../models'
 
 function Dialogs(props: any) {
-    const state = props.dialogsPage
+    const state = props.dialogs
 
     let dialogsElements = state.users.map((user: User) => <Dialog key={user.id} user={user}/>)
 
@@ -13,7 +13,7 @@ function Dialogs(props: any) {
 
     const sendMessage = () => props.sendMessage()
 
-    const onMessageChange = (e: SyntheticEvent) => props.updateNewMessageBody((e.target as HTMLTextAreaElement).value)
+    const onMessageChange = (e: SyntheticEvent) => props.updateNewMessage((e.target as HTMLTextAreaElement).value)
 
     return (
         <div className={styles.dialogs}>

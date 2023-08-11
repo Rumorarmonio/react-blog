@@ -9,12 +9,12 @@ function Friends(props: any) {
             <h3 className={styles.header}>Friends</h3>
             <div className={styles.container}>
                 {
-                    props.friends.map((friend: any) => (
+                    props.users.map((user: any) => (
                         <div className={styles.friend}>
-                            <NavLink to={'/profile/' + friend.id}>
-                                <ProfilePicture user={friend} width="50px" height="50px" borderRadius="50%"/>
+                            <NavLink to={'/profile/' + user.id}>
+                                <ProfilePicture user={user} width="50px" height="50px" borderRadius="50%"/>
                             </NavLink>
-                            <span className={styles.name}>{friend.name}</span>
+                            <span className={styles.name}>{user.name}</span>
                         </div>
                     ))
                 }
