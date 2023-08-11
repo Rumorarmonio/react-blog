@@ -6,6 +6,7 @@ import usersReducer from './usersReducer'
 import logger from 'redux-logger'
 import friendsReducer from './friendsReducer'
 import authReducer from './authReducer'
+import thunkMiddleware from 'redux-thunk'
 
 const myLogger = (store: any) => (next: any) => (action: any) => {
     console.log('Logged Action: ', action)
@@ -25,7 +26,7 @@ let reducers = combineReducers(
     }
 )
 
-let store = createStore(reducers, {}, applyMiddleware(logger/*thunk*/))
+let store = createStore(reducers, {}, applyMiddleware(/*logger*/thunkMiddleware))
 
 // ???
 declare const window: Window &

@@ -10,6 +10,7 @@ const instance = axios.create({
     }
 })
 
+// TODO: use thunks for all requests (Header, Navbar, etc)
 // TODO: Access has been blocked by CORS policy on GH-pages
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
@@ -28,15 +29,9 @@ export const usersAPI = {
 
     follow(id: number = 1) {
         return instance.post(`follow/${id}`)
-            .then(response => {
-                return response.data
-            })
     },
 
     unfollow(id: number = 1) {
         return instance.delete(`follow/${id}`)
-            .then(response => {
-                return response.data
-            })
     }
 }

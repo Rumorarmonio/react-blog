@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './Users.module.scss'
 import {NavLink} from 'react-router-dom'
 import ProfilePicture from '../common/ProfilePicture/ProfilePicture'
-import {usersAPI} from '../../api/API'
 
 function Users(props: any) {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -61,28 +60,12 @@ function Users(props: any) {
                                         user.followed
                                             ? <button disabled={props.followingInProgress.some((id: number) => id === user.id)}
                                                       className={styles.button}
-                                                      onClick={() => {
-                                                          props.toggleFollowingProgress(true, user.id)
-                                                          usersAPI.unfollow(user.id)
-                                                              .then(data => {
-                                                                  if (data.resultCode == 0) {
-                                                                      props.unfollow(user.id)
-                                                                  }
-                                                                  props.toggleFollowingProgress(false, user.id)
-                                                              })
-                                                      }}>Unfollow</button>
+                                                      onClick={() => props.unfollow(user.id)
+                                                      }>Unfollow</button>
                                             : <button disabled={props.followingInProgress.some((id: number) => id === user.id)}
                                                       className={styles.button}
-                                                      onClick={() => {
-                                                          props.toggleFollowingProgress(true, user.id)
-                                                          usersAPI.follow(user.id)
-                                                              .then(data => {
-                                                                  if (data.resultCode == 0) {
-                                                                      props.follow(user.id)
-                                                                  }
-                                                                  props.toggleFollowingProgress(false, user.id)
-                                                              })
-                                                      }}>Follow</button>
+                                                      onClick={() => props.follow(user.id)
+                                                      }>Follow</button>
                                     }
                                 </div>
                             </div>

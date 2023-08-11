@@ -2,8 +2,16 @@ import React from 'react'
 import Users from './Users'
 import {connect} from 'react-redux'
 import Preloader from '../common/Preloader/Preloader'
-import {follow, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingProgress, toggleIsFetching, unfollow} from '../../redux/usersReducer'
-import {usersAPI} from '../../api/API'
+import {
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers,
+    toggleFollowingProgress,
+    toggleIsFetching,
+    unfollow,
+    getUsers
+} from '../../redux/usersReducer'
 
 type MyProps = {
     users: any,
@@ -19,30 +27,15 @@ type MyProps = {
     setTotalUsersCount: Function,
     toggleIsFetching: Function,
     toggleFollowingProgress: Function
+    getUsers: Function
 }
 
 type MyState = { value: string }
 
 class UsersContainer extends React.Component<MyProps, MyState> {
-    componentDidMount() {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
-    }
+    componentDidMount = () => this.props.getUsers(this.props.currentPage, this.props.pageSize)
 
-    onPageChanged = (pageNumber: number) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-            })
-    }
+    onPageChanged = (pageNumber: number) => this.props.getUsers(pageNumber, this.props.pageSize)
 
     render() {
         return (
@@ -82,6 +75,7 @@ export default connect(mapStateToProps,
         setCurrentPage,
         setTotalUsersCount,
         toggleIsFetching,
-        toggleFollowingProgress
+        toggleFollowingProgress,
+        getUsers
     }
 )(UsersContainer)
