@@ -9,6 +9,8 @@ import {
     toggleFollowingProgress,
     getUsers
 } from '../../redux/usersReducer'
+import {withAuthRedirect} from '../../hoc/WithAuthRedirect'
+import Dialogs from '../Dialogs/Dialogs'
 
 type MyProps = {
     users: any,
@@ -61,6 +63,8 @@ const mapStateToProps = (state: any) => (
     }
 )
 
+const AuthRedirectComponent = withAuthRedirect(UsersContainer)
+
 export default connect(mapStateToProps,
     {
         follow,
@@ -69,4 +73,4 @@ export default connect(mapStateToProps,
         toggleFollowingProgress,
         getUsers
     }
-)(UsersContainer)
+)(AuthRedirectComponent)
