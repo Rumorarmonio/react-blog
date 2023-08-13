@@ -6,6 +6,7 @@ let mapStateToPropsForRedirect = (state: any) => ({
     isAuth: state.auth.isAuth
 })
 
+// TODO: on page reload always shows login page
 export const withAuthRedirect = (Component: any) => {
     type MyProps = { isAuth: boolean }
 

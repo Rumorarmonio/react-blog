@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './ProfileInfo.module.scss'
 import Preloader from '../../common/Preloader/Preloader'
 import ProfilePicture from '../../common/ProfilePicture/ProfilePicture'
+import ProfileStatus from './ProfileStatus'
 
 function ProfileInfo(props: any) {
     if (!props.profile) {
@@ -21,7 +22,7 @@ function ProfileInfo(props: any) {
                 <p className={styles.description}>
                     {props.profile.fullName}
                     <br/>
-                    {props.profile.aboutMe}
+                    <ProfileStatus status={props.profile.aboutMe}/>
                     <br/>
                     {props.profile.lookingForAJob ? 'Ищу работу' : 'Не ищу работу'}
                     <br/>
