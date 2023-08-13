@@ -9,7 +9,7 @@ import {
     toggleFollowingProgress,
     getUsers
 } from '../../redux/usersReducer'
-import {withAuthRedirect} from '../../hoc/WithAuthRedirect'
+import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import Dialogs from '../Dialogs/Dialogs'
 
 type MyProps = {
