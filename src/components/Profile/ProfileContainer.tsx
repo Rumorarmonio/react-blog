@@ -1,7 +1,7 @@
 import React from 'react'
 import Profile from './Profile'
 import {connect} from 'react-redux'
-import {getProfile} from '../../redux/profileReducer'
+import {getProfile, getStatus, updateStatus} from '../../redux/profileReducer'
 import {useLocation, useNavigate, useParams} from 'react-router-dom'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
@@ -9,25 +9,34 @@ import {compose} from 'redux'
 type MyProps = {
     profile: any,
     router: any,
-    getProfile: Function
+    status: string,
+    updateStatus: Function,
+    getProfile: Function,
+    getStatus: Function
 }
 
 type MyState = { value: string }
 
 class ProfileContainer extends React.Component<MyProps, MyState> {
     componentDidMount() {
-        let id: number = this.props.router.params.userId
+        let userId: number = this.props.router.params.userId
 
-        if (!id) {
-            id = 2
+        if (!userId) {
+            // userId = 2
+            userId = 29760
         }
 
-        this.props.getProfile(id)
+        this.props.getProfile(userId)
+        this.props.getStatus(userId)
     }
 
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile}/>
+            <Profile {...this.props}
+                     profile={this.props.profile}
+                     status={this.props.status}
+                     updateStatus={this.props.updateStatus}
+            />
         )
     }
 }
@@ -49,11 +58,12 @@ function withRouter(Component: any) {
 }
 
 let mapStateToProps = (state: any) => ({
-    profile: state.profilePage.profile,
+    profile: state.profile.profile,
+    status: state.profile.status
 })
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getProfile}),
+    connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer)

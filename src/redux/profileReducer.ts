@@ -1,10 +1,11 @@
 import {Post} from '../models'
-import {usersAPI} from '../api/API'
+import {profileAPI} from '../api/API'
 
 enum types {
     ADD_POST = 'ADD-POST',
     UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
     SET_USER_PROFILE = 'SET_USER_PROFILE',
+    SET_STATUS = 'SET_STATUS'
 }
 
 let initialState = {
@@ -14,7 +15,8 @@ let initialState = {
         {id: 3, text: 'It\'s my first post!', likes: 25}
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 function profileReducer(state: any = initialState, action: any) {
@@ -49,14 +51,33 @@ function profileReducer(state: any = initialState, action: any) {
 export const addPostCreator = () => ({type: types.ADD_POST})
 export const setUserProfile = (profile: any) => ({type: types.SET_USER_PROFILE, profile})
 export const updateNewPostCreator = (text: string) => ({type: types.UPDATE_NEW_POST_TEXT, newText: text})
+export const setStatus = (status: string) => ({type: types.SET_STATUS, status})
 
-export const getProfile = (id: number) => {
-    return (dispatch: Function) => {
-        usersAPI.getProfile(id)
-            .then(data => {
-                dispatch(setUserProfile(data))
+// thunks
+export const getProfile = (userId: number) =>
+    (dispatch: Function) => {
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data))
             })
     }
-}
+    
+export const getStatus = (userId: number) =>
+    (dispatch: Function) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+                dispatch(setStatus(response.data))
+            })
+    }
+
+export const updateStatus = (status: string) =>
+    (dispatch: Function) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setStatus(status))
+                }
+            })
+    }
 
 export default profileReducer

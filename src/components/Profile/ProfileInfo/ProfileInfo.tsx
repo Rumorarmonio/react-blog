@@ -22,7 +22,9 @@ function ProfileInfo(props: any) {
                 <p className={styles.description}>
                     {props.profile.fullName}
                     <br/>
-                    <ProfileStatus status={props.profile.aboutMe}/>
+                    <ProfileStatus status={props.status}
+                                   updateStatus={props.updateStatus}
+                    />
                     <br/>
                     {props.profile.lookingForAJob ? 'Ищу работу' : 'Не ищу работу'}
                     <br/>

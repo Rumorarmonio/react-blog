@@ -30,6 +30,7 @@ function Sidebar(props: any) {
                     </li>
                 </ul>
             </nav>
+            {/*TODO: shows only 5 users*/}
             <Friends users={props.users}/>
         </>
     )

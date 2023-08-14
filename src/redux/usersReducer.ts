@@ -13,7 +13,7 @@ enum types {
 
 let initialState = {
     users: [],
-    pageSize: 5,
+    pageSize: 50,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,

@@ -16,7 +16,7 @@ const myLogger = (store: any) => (next: any) => (action: any) => {
 let reducers = combineReducers(
     {
         // TODO: short name
-        profilePage: profileReducer,
+        profile: profileReducer,
         dialogs: dialogsReducer,
         users: usersReducer,
         sidebar: sidebarReducer,
